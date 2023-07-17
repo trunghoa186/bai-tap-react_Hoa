@@ -1,0 +1,25 @@
+.tab {
+    height: 100px;
+    width: 250px;
+    border: 1px solid #ccc;
+    background-color: white;
+    border: 10px;
+    text-align: center;
+}
+span {
+    padding-left: 10px;
+}
+
+.tab:hover {
+    color: rgb(184, 43, 153);
+}
+
+.tab--action{
+    color: white;
+    background-color:rgb(184, 43, 153) ;
+}
+
+.tab--action:hover{
+    color: white;
+    background-color:rgb(184, 43, 153) ;
+}

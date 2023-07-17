@@ -1,0 +1,156 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+
+.box {
+    border: 1px solid #ddd;
+    width: 20%;
+    height: 500px;
+    background-color: white;
+    box-shadow: 5px 5px #ddd;
+}
+
+.data {
+    height: 50%;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.data_day {
+    font-size: 30px;
+    color: #b4adad;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.data_numb {
+    font-size: 100px;
+    letter-spacing: 5px;
+    color: aqua;
+}
+
+.chart {
+    display: flex;
+    padding-top: 20px;
+    justify-content: space-around;
+}
+
+.box_column {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 10%;
+    height: 200px;
+    align-items: center;
+    justify-content: space-around;
+    align-self: self-end;
+}
+
+.column {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 70%;
+    width: 70%;
+    border: 1px solid #ddd;
+}
+.non_percent {
+    width: 100%;
+}
+
+.percent {
+    width: 100%;
+}
+
+.content {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.mon_color {
+    background-color:rgb(199, 51, 51) ;
+}
+
+.tue_color {
+    background-color:rgb(87, 179, 60) ;
+}
+.web_color {
+    background-color:rgb(160, 168, 45) ;
+}
+.thu_color {
+    background-color:rgb(103, 231, 221) ;
+}
+.fri_color {
+    background-color:rgb(168, 104, 45) ;
+}
+/* today visitor */
+
+#today_visi .chart .mon_color {
+    height: 20%;
+}
+#today_visi .chart .tue_color {
+    height: 15%;
+}
+#today_visi .chart .web_color {
+    height: 30%;
+}
+#today_visi .chart .thu_color {
+    height: 70%;
+}
+#today_visi .chart .fri_color {
+    height: 60%;
+}
+/* yesterday */
+#yesterday_visi .chart .mon_color {
+    height: 22%;
+}
+#yesterday_visi .chart .tue_color {
+    height: 24%;
+}
+#yesterday_visi .chart .web_color {
+    height: 46%;
+}
+#yesterday_visi .chart .thu_color {
+    height: 91%;
+}
+#yesterday_visi .chart .fri_color {
+    height: 66%;
+}
+
+/* total*/
+#total_visi .chart .mon_color {
+    height: 22%;
+}
+#total_visi .chart .tue_color {
+    height: 24%;
+}
+#total_visi .chart .web_color {
+    height: 46%;
+}
+#total_visi .chart .thu_color {
+    height: 91%;
+}
+#total_visi .chart .fri_color {
+    height: 66%;
+}
+/* curent */
+#curent .chart .mon_color {
+    height: 12%;
+}
+#curent .chart .tue_color {
+    height: 23%;
+}
+#curent .chart .web_color {
+    height: 45%;
+}
+#curent .chart .thu_color {
+    height: 78%;
+}
+#curent .chart .fri_color {
+    height: 68%;
+}

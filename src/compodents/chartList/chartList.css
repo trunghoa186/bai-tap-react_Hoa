@@ -1,0 +1,7 @@
+.general {
+    display: flex;
+    background-color: rgb(227, 235, 232);
+    height: 600px;
+    align-items: center;
+    justify-content: space-around;
+}
