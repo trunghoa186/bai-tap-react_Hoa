@@ -26,7 +26,7 @@ function Index() {
   };
 
   return (
-    <div className="">
+    <div >
       <TabItem
         onNextImage={onNextImage}
         onBackImage={onBackImage}
@@ -43,7 +43,7 @@ const TabItem = ({ onNextImage, onBackImage, index, ImgList }) => {
   return (
     <div>
       <img style={{ width: "350px", height: "250px" }} src={ImgList[index]} />
-      <div className="d-flex">
+      <div className="d-flex align-items-center justify-content-center">
         <button onClick={onBackImage} className="btn btn-secondary mt-3 w-auto">
           {" "}
           back

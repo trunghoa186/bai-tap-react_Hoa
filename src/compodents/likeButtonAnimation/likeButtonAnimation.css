@@ -1,19 +1,21 @@
-.tab {
+.tab-like-item {
     height: 100px;
     width: 250px;
-    border: 1px solid #ccc;
+    border: 1px solid #d8d0d0;
     background-color: white;
-    border: 10px;
+    border-radius: 10px;
     text-align: center;
 }
 span {
     padding-left: 10px;
 }
 
-.tab:hover {
+.tab-like-item:hover {
     color: rgb(184, 43, 153);
 }
-
+.tab-like-icon:hover{
+    color: rgb(184, 43, 153);
+}
 .tab--action{
     color: white;
     background-color:rgb(184, 43, 153) ;
@@ -23,3 +25,8 @@ span {
     color: white;
     background-color:rgb(184, 43, 153) ;
 }
+.tab-like-btn {
+    height: 400px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }

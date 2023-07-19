@@ -1,12 +1,11 @@
-import React, {  useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 // import { getDuration } from '../../helper';
 
 // import audio from 'assets/music/coaycuaanhay.mp3';
 // import thumbnail from 'assets/image/music/1.jpg';
 
-import './music.css';
-
+import "./music.css";
 
 export default function Play(props) {
   const { name, artist, cover, id, src } = props;
@@ -21,18 +20,18 @@ export default function Play(props) {
     setIsPlaying(false);
   }, [id]);
 
-
   const onChangeSlider = useCallback((event) => {
     // setTimer(event.target.value);
     audioRef.current.currentTime = event.target.value;
   }, []);
 
-
-
   useEffect(() => {
     function getTrackLength() {
-      audioRef.current.addEventListener('loadedmetadata', function () {
-        console.log('««««« audioRef.current.duration »»»»»', audioRef.current.duration);
+      audioRef.current.addEventListener("loadedmetadata", function () {
+        console.log(
+          "««««« audioRef.current.duration »»»»»",
+          audioRef.current.duration
+        );
         setDuration(audioRef.current.duration);
       });
     }
@@ -47,27 +46,25 @@ export default function Play(props) {
   const getDuration = (duration) => {
     const minutes = Math.floor(duration / 60); // Số phút
     const seconds = Math.floor(duration % 60); // Số giây
-  
-    const formattedDuration = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  
+
+    const formattedDuration = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
     return formattedDuration;
-  }
+  };
 
   const onUpdateTimer = useCallback(() => {
     setTimer(audioRef.current.currentTime);
   }, []);
 
   const onTogglePlayMusic = useCallback(() => {
-      if (isPlaying) {
-        audioRef.current.pause(); // Pause the song if it is playing
-      } else {
-        audioRef.current.play(); // Play the song if it is paused
-      }
+    if (isPlaying) {
+      audioRef.current.pause(); // Pause the song if it is playing
+    } else {
+      audioRef.current.play(); // Play the song if it is paused
+    }
 
-      setIsPlaying((prevState) => !prevState);
-    },
-    [isPlaying],
-  );
+    setIsPlaying((prevState) => !prevState);
+  }, [isPlaying]);
 
   return (
     <div className="musicSpace">
@@ -77,7 +74,7 @@ export default function Play(props) {
         <p className="artist-name">{artist}</p>
 
         <div
-          className={`disk ${isPlaying ? 'play' : ''}`}
+          className={`disk ${isPlaying ? "play" : ""}`}
           style={{
             backgroundImage: `url(${cover})`,
           }}

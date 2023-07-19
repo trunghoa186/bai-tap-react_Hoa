@@ -73,7 +73,9 @@ export default Index;
 
 const TabItem = ({ title, content, value, activeTab, onClick }) => {
   return (
-    <div className="-element">
+    <div>
+      
+    <div className="tab-element">
       <div className="tab-element__item " onClick={() => onClick(value)}>
         <div
           className={`tab-element__title ${
@@ -83,6 +85,7 @@ const TabItem = ({ title, content, value, activeTab, onClick }) => {
           {title}
         </div>
       </div>
+    </div>
       {value === activeTab && <div className="tab-element__content">{content}</div>}
     </div>
   );

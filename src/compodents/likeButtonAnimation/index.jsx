@@ -8,7 +8,7 @@ function Index(props) {
         setIsActive((s) => !s);
       };
     return (
-        <div>
+        <div className='tab-like-btn'>
             <TabItem 
                 onClick ={onClickTab1}
                 isActive={isActive} 
@@ -21,10 +21,10 @@ export default Index;
 
 const TabItem = ({ isActive , onClick}) => {
     return ( 
-        <div onClick={onClick} className={`tab d-flex justify-content-center align-items-center ${isActive ? 'tab--action' : ''}`}>
+        <div onClick={onClick} className={`tab-like-item d-flex justify-content-center align-items-center ${isActive ? 'tab--action' : ''}`}>
         
-            <i className="fa-solid fa-heart"></i>
-
+            <i className={`tab-like-icon fa-solid fa-heart ${isActive ? 'tab--action' : ''}`}></i>
+            
             <span>Like</span>
         </div>
     )
