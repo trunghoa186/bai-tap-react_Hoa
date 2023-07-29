@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {  useCallback, useEffect, useRef, useState } from 'react';
 
 // import { getDuration } from '../../helper';
 
 // import audio from 'assets/music/coaycuaanhay.mp3';
 // import thumbnail from 'assets/image/music/1.jpg';
 
-import "./music.css";
+import './music.css';
 
-export default function Play(props) {
-  const { name, artist, cover, id, src } = props;
+export default function Play({ name, artist, cover, id, src, onPrevMusic, onNextMusic }) {
 
   const audioRef = useRef();
 
@@ -21,33 +20,25 @@ export default function Play(props) {
   }, [id]);
 
   const onChangeSlider = useCallback((event) => {
-    // setTimer(event.target.value);
     audioRef.current.currentTime = event.target.value;
   }, []);
 
+  const getTrackLength = () => {
+    audioRef.current.addEventListener('loadedmetadata', function () {
+      // Thân hàm
+      setDuration(audioRef.current.duration);
+    });
+  }
+
   useEffect(() => {
-    function getTrackLength() {
-      audioRef.current.addEventListener("loadedmetadata", function () {
-        console.log(
-          "««««« audioRef.current.duration »»»»»",
-          audioRef.current.duration
-        );
-        setDuration(audioRef.current.duration);
-      });
-    }
-
     getTrackLength();
-
-    // if (audioRef.current) {
-    //   getTrackLength(audioRef.current);
-    // }
   }, []);
 
   const getDuration = (duration) => {
     const minutes = Math.floor(duration / 60); // Số phút
     const seconds = Math.floor(duration % 60); // Số giây
 
-    const formattedDuration = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    const formattedDuration = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
     return formattedDuration;
   };
@@ -63,8 +54,12 @@ export default function Play(props) {
       audioRef.current.play(); // Play the song if it is paused
     }
 
-    setIsPlaying((prevState) => !prevState);
+    setIsPlaying((prev) => !prev);
   }, [isPlaying]);
+
+  const onReloadMusic = () => {
+    audioRef.current.load();
+  };
 
   return (
     <div className="musicSpace">
@@ -74,7 +69,7 @@ export default function Play(props) {
         <p className="artist-name">{artist}</p>
 
         <div
-          className={`disk ${isPlaying ? "play" : ""}`}
+          className={`disk ${isPlaying ? 'play' : ''}`}
           style={{
             backgroundImage: `url(${cover})`,
           }}
@@ -95,9 +90,10 @@ export default function Play(props) {
         </div>
 
         <div className="controls">
-          <button className="btn backward-btn">
+          <button className="btn backward-btn" onClick={onPrevMusic}>
             <i className="fa-solid fa-caret-left"></i>
           </button>
+          {/* Play or pause */}
           <button className="play-btn pause" onClick={onTogglePlayMusic}>
             {isPlaying ? (
               <i className="fa-solid fa-pause fa-2xl"></i>
@@ -105,8 +101,11 @@ export default function Play(props) {
               <i className="fa-solid fa-play fa-2xl"></i>
             )}
           </button>
-          <button className="btn forward-btn">
+          <button className="btn forward-btn" onClick={onNextMusic}>
             <i className="fa-solid fa-caret-right"></i>
+          </button>
+          <button className="btn forward-btn" onClick={onReloadMusic}>
+            <i className="fa fa-refresh" aria-hidden="true"></i>
           </button>
         </div>
 
@@ -117,7 +116,7 @@ export default function Play(props) {
           id="audioPlay"
           ref={audioRef}
           onTimeUpdate={onUpdateTimer}
-          // onEnded={} handle next song
+          onEnded={onNextMusic} // handle next song
         />
       </div>
     </div>

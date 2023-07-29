@@ -17,6 +17,14 @@ import LikeButtonAnimation from "./compodents/likeButtonAnimation";
 
 import MusicOlayList from "./compodents/musicPlayList";
 
+import Form from "compodents/form";
+
+import HomeworksForm from "compodents/homeworksForm"
+
+import Login from "compodents/login"
+
+import ProductList from "compodents/product/productList.jsx"
+
 function App() {
   return (
     <div className="App">
@@ -51,15 +59,25 @@ function App() {
 
       {/* <ChartList />  */}
       {/* bài tập 1 */}
-      <ButtonAccordHwS4 />
+      {/* <ButtonAccordHwS4 />
       <ElementTabHwS4 />
       <SlideImage />
-      <LikeButtonAnimation />
-
+      <LikeButtonAnimation /> */}
+      
 
 
       {/* list play */}
-      {/* <MusicOlayList /> */}
+      <MusicOlayList />
+
+      {/* <Form /> */}
+
+      {/* bài tập về nhà form */}
+      {/* <HomeworksForm /> */}
+
+      {/* form login */}
+      {/* <Login /> */}
+
+      {/* <ProductList /> */}
     </div>
   );
 }

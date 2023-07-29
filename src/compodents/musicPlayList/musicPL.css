@@ -92,3 +92,7 @@
   .text-strong {
     font-weight: bold;
   }
+
+  .liked {
+    color: red;
+  }

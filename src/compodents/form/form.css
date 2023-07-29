@@ -1,0 +1,18 @@
+.invalid {
+    border-color: red;
+  }
+  
+  .valid {
+    border-color: black;
+  }
+  
+  input {
+    border-radius: 4px;
+    width: 50%;
+    height: 40px;
+    border-style: solid;
+  }
+  
+  input:focus-visible, :focus {
+    border-color: transparent;
+  }
