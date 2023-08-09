@@ -51,17 +51,17 @@ import "./App.css";
 function App() {
   
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const token = window.localStorage.getItem(DEFAULT.TOKEN);
+  const token = window.localStorage.getItem(DEFAULT.TOKEN);
 
-  // useEffect(() => {
-  //   if (token) {
-  //     axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
-  //   } else {
-  //     navigate(LOCATION.LOGIN);
-  //   }
-  // }, [navigate, token]);
+  useEffect(() => {
+    if (token) {
+      axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
+    } else {
+      navigate(LOCATION.LOGIN);
+    }
+  }, [navigate, token]);
 
   return (
     // Bài tập todo list 
@@ -118,48 +118,49 @@ function App() {
 
     //   {/* <ProductList /> */}
     // </div>
-    <>
-      <div className='container bg-muted'>
-        <HomeworkLoginForm />
-      </div>
-
-      <div className='container bg-secondary'>
-        <LoginAccout />
-      </div>
-
-    </>
-
-
+    // bài tập homwork form login
     // <>
-  
-    //  {
-    //     !token ? (
-    //       <Routes>
-    //         <Route path={LOCATION.HOME} element={<NonAuthLayout />} >
-    //           <Route index path={LOCATION.LOGIN} element={<LoginPages />} />
-    //           <Route path={LOCATION.REGISTER} element={<RegisterPages />} />
-    //         </Route>
-    //       </Routes>
-    //     ) : (
-    //       <Routes>
-    //         <Route path={LOCATION.HOME} element={<AuthLayout />}>
-    //           <Route index element={<HomePages />} />
-    //           <Route path={LOCATION.PRODUCT} element={<ProductsListPage />} />
-    //           <Route path={LOCATION.MUSICPLAY} element={<PlayListPages />} />
-    //           {/* <Route path={LOCATION.IMAGE} element={<SlideImagesPages />} /> */}
-    //           {/* <Route path="cart-employee" element={<CartEmployeePage />} />
-    //           <Route path="cart-manager" element={<CartManagerPage />} />
-    //           <Route path="button-accordion" element={<ButtonAccordions />} /> */}
-    //           <Route path={LOCATION.FORM} element={<Form />} />
-    //           <Route path={LOCATION.TODO} element={<TodoPage />} />
+    //   <div className='container bg-muted'>
+    //     <HomeworkLoginForm />
+    //   </div>
 
-    //         </Route>
-    //         <Route path="*" element={<NotFoundPage />} />
-    //       </Routes>
-    //     )
-    //   }
-      
+    //   <div className='container bg-secondary'>
+    //     <LoginAccout />
+    //   </div>
+
     // </>
+
+
+    <>
+  
+     {
+        !token ? (
+          <Routes>
+            <Route path={LOCATION.HOME} element={<NonAuthLayout />} >
+              <Route index path={LOCATION.LOGIN} element={<LoginPages />} />
+              <Route path={LOCATION.REGISTER} element={<RegisterPages />} />
+            </Route>
+          </Routes>
+        ) : (
+          <Routes>
+            <Route path={LOCATION.HOME} element={<AuthLayout />}>
+              <Route index element={<HomePages />} />
+              <Route path={LOCATION.PRODUCT} element={<ProductsListPage />} />
+              <Route path={LOCATION.MUSICPLAY} element={<PlayListPages />} />
+              {/* <Route path={LOCATION.IMAGE} element={<SlideImagesPages />} /> */}
+              {/* <Route path="cart-employee" element={<CartEmployeePage />} />
+              <Route path="cart-manager" element={<CartManagerPage />} />
+              <Route path="button-accordion" element={<ButtonAccordions />} /> */}
+              <Route path={LOCATION.FORM} element={<Form />} />
+              <Route path={LOCATION.TODO} element={<TodoPage />} />
+
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        )
+      }
+      
+    </>
 
 
     //   <div className="App">
