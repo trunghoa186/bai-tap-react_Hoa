@@ -6,7 +6,7 @@ import Image3 from "../../assets/image/images-3.jpg";
 import Image4 from "../../assets/image/images-4.jpg";
 import Image5 from "../../assets/image/images-5.jpg";
 
-function Index() {
+function SlideImages() {
   const ImgList = [Image1, Image2, Image3, Image4, Image5];
   console.log("array", ImgList);
 
@@ -37,7 +37,7 @@ function Index() {
   );
 }
 
-export default Index;
+export default SlideImages;
 
 const TabItem = ({ onNextImage, onBackImage, index, ImgList }) => {
   return (

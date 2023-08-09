@@ -1,27 +1,22 @@
-import React, { useState } from "react";
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { axiosClient } from "helper/axiosClient";
+import { useNavigate } from "react-router-dom";
+
+import { DEFAULT, LOCATION } from 'constants/index';
 
 function Login(props) {
+  const navigate = useNavigate();
 
-  const [user,setUser] = useState({
-    email: '',
-    password: '',
-  }); 
-  
-  const onChangeUser = (name) => (e) => {
-    setUser((prev) => ({
-      ...prev,
-      [name]: e.target.value,
-    }))
-  } 
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
 
   const onLogin = async (e) => {
-
     e.preventDefault();
-  
 
-    const url = 'https://batch-293-0-nodejs.onrender.com/admin/employees/login';
-    
+    const url = "/admin/employees/login";
+
     //  sử dụng fetch
     // fetch(url, {
     //   method: "POST",
@@ -55,49 +50,74 @@ function Login(props) {
     // sử dụng async await và try catch để  chạy
     try {
       // Promise
-      const response = await axios.post(url, user);
-      console.log(response.data);
+      const response = await axiosClient.post(url, user);
+
+      localStorage.setItem(DEFAULT.TOKEN, response.data.token);
+      localStorage.setItem(DEFAULT.REFRESH_TOKEN, response.data.refreshToken);
+
+      if (response && response.data.token) {
+        navigate(LOCATION.HOME);
+      }
+
     } catch (err) {
       console.error(err);
-      console.log('Login thất bại');
+      console.log("Login thất bại");
     }
   };
+
+  const onChange = (e, fieldName) => {
+    setUser((prev) => ({
+      ...prev,
+      [fieldName]: e.target.value,
+    }));
+  };
+
+  const token = localStorage.getItem(DEFAULT.TOKEN);
+
+  useEffect(() => {
+    if (token) {
+      navigate(LOCATION.HOME);
+    }
+  }, [navigate, token]);
+
   return (
-    <div>
-      <form>
-        {/* Email input */}
-        <div className="form-outline mb-4">
-          <label className="form-label" htmlFor="form2Example1">
+    <>
+      <h1>Đăng nhập</h1>
+      <form className="p-5" onSubmit={onLogin}>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">
             Email address
           </label>
-          <input 
-            type="email" 
-            id="form2Example1" 
-            className="form-control" 
+
+          <input
+            type="email"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
             value={user.email}
-            onChange={onChangeUser('email')}
-            />
+            onChange={(e) => onChange(e, "email")}
+          />
         </div>
-        {/* Password input */}
-        <div className="form-outline mb-4">
-          <label className="form-label" htmlFor="form2Example2">
+
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">
             Password
           </label>
-          <input 
-            type="password" 
-            id="form2Example2" 
-            className="form-control" 
+
+          <input
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
             value={user.password}
-            onChange={onChangeUser('password')}
-            />
+            onChange={(e) => onChange(e, "password")}
+          />
         </div>
-            
-        {/* Submit button */}
-        <button onClick={onLogin} className="btn btn-primary btn-block mb-4">
-          Sign in
+
+        <button type="submit" className="btn btn-primary">
+          Submit
         </button>
       </form>
-    </div>
+    </>
   );
 }
 
