@@ -44,9 +44,6 @@ function Header(props) {
 
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link className="navbar-brand" to={LOCATION.HOME}>
-            Trang chủ
-          </Link>
           <button
             className="navbar-toggler"
             type="button"
